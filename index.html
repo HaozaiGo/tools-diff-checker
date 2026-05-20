@@ -1,13 +1,96 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
+  <!-- Primary Meta -->
+  <meta name="description" content="文本差异对比工具。并列视图、统一视图、单词级高亮、LCS差分算法。浏览器端处理，文本不上传。">
+  <meta name="keywords" content="diff checker, text compare, text diff online, 文本对比工具, 差异对比, diff tool, compare text">
+  <meta name="author" content="Dudu Tools">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://diff-checker.vercel.app/">
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Diff Checker - 免费在线工具">
+  <meta property="og:description" content="文本差异对比工具。并列视图、统一视图、单词级高亮、LCS差分算法。浏览器端处理，文本不上传。">
+  <meta property="og:url" content="https://diff-checker.vercel.app/">
+  <meta property="og:image" content="https://diff-checker.vercel.app/og-image.png">
+  <meta property="og:site_name" content="Diff Checker">
+  <meta property="og:locale" content="zh_CN">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Diff Checker - 免费在线工具">
+  <meta name="twitter:description" content="文本差异对比工具。并列视图、统一视图、单词级高亮、LCS差分算法。浏览器端处理，文本不上传。">
+  <meta name="twitter:image" content="https://diff-checker.vercel.app/og-image.png">
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Diff Checker - 文本差异对比在线工具</title>
-  <meta name="description" content="免费在线文本差异对比工具。逐行对比、单词级高亮、统计差异。浏览器端处理，文本不上传。">
-  <meta name="keywords" content="diff checker, text compare, text diff, compare text online, 文本对比, 差异对比">
-  <link rel="canonical" href="https://diff-checker.vercel.app/">
+  <title>Diff Checker - 免费在线工具 | 浏览器端处理 · 隐私安全</title>
   <link rel="stylesheet" href="css/style.css">
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebApplication",
+  "name": "Diff Checker",
+  "description": "文本差异对比工具。并列视图、统一视图、单词级高亮、LCS差分算法。浏览器端处理，文本不上传。",
+  "url": "https://diff-checker.vercel.app/",
+  "applicationCategory": "DeveloperApplication",
+  "operatingSystem": "All",
+  "browserRequirements": "Requires JavaScript",
+  "offers": {
+    "@type": "Offer",
+    "price": "0",
+    "priceCurrency": "USD"
+  },
+  "featureList": [
+    "并列双栏对比视图",
+    "统一视图(Git diff风格)",
+    "单词级精确差异高亮",
+    "新增/删除/修改统计",
+    "忽略大小写与空白",
+    "一键交换对比方向"
+  ]
+}
+  </script>
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Diff Checker 能对比多大的文件？",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "受浏览器内存限制，建议对比 10MB 以下的文本文件。"
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "对比结果可以导出吗？",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "支持复制结果和下载，方便保存或分享。"
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "支持哪些差异对比算法？",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "采用 LCS（最长公共子序列）算法，精确到单词级别的差异对比。"
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Diff Checker 安全吗？",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "所有对比在浏览器端完成，文本不上传服务器，完全安全。"
+      }
+    }
+  ]
+}
+  </script>
 </head>
 <body>
   <header class="header">

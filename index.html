@@ -1,103 +1,116 @@
 <!DOCTYPE html>
-<html lang="zh-CN">
+<html lang="en">
 <head>
   <!-- Primary Meta -->
-  <meta name="description" content="文本差异对比工具。并列视图、统一视图、单词级高亮、LCS差分算法。浏览器端处理，文本不上传。">
-  <meta name="keywords" content="diff checker, text compare, text diff online, 文本对比工具, 差异对比, diff tool, compare text">
+  <meta name="description" content="Compare text online with side-by-side and unified diff views, word-level highlighting, and private browser-based processing.">
+  <meta name="keywords" content="diff checker, text compare, text diff online, compare text, online diff tool, word diff checker">
   <meta name="author" content="Dudu Tools">
   <meta name="robots" content="index, follow">
   <link rel="canonical" href="https://diff-checker.vercel.app/">
-
-  <!-- Open Graph -->
+  <link rel="alternate" hreflang="en" href="https://diff-checker.vercel.app/">
+  <link rel="alternate" hreflang="zh-CN" href="https://diff-checker.vercel.app/zh/">
+  <link rel="alternate" hreflang="x-default" href="https://diff-checker.vercel.app/">
+<!-- Open Graph -->
   <meta property="og:type" content="website">
-  <meta property="og:title" content="Diff Checker - 免费在线工具">
-  <meta property="og:description" content="文本差异对比工具。并列视图、统一视图、单词级高亮、LCS差分算法。浏览器端处理，文本不上传。">
+  <meta property="og:title" content="Diff Checker Online | Compare Text and Find Differences">
+  <meta property="og:description" content="Compare text online with side-by-side and unified diff views, word-level highlighting, and private browser-based processing.">
   <meta property="og:url" content="https://diff-checker.vercel.app/">
-  <meta property="og:image" content="https://diff-checker.vercel.app/og-image.png">
-  <meta property="og:site_name" content="Diff Checker">
-  <meta property="og:locale" content="zh_CN">
+<meta property="og:site_name" content="Diff Checker">
+  <meta property="og:locale" content="en_US">
 
   <!-- Twitter Card -->
-  <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Diff Checker - 免费在线工具">
-  <meta name="twitter:description" content="文本差异对比工具。并列视图、统一视图、单词级高亮、LCS差分算法。浏览器端处理，文本不上传。">
-  <meta name="twitter:image" content="https://diff-checker.vercel.app/og-image.png">
-  <meta charset="UTF-8">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Diff Checker Online | Compare Text and Find Differences">
+  <meta name="twitter:description" content="Compare text online with side-by-side and unified diff views, word-level highlighting, and private browser-based processing.">
+<meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Diff Checker - 免费在线工具 | 浏览器端处理 · 隐私安全</title>
+  <title>Diff Checker Online | Compare Text and Find Differences</title>
   <link rel="stylesheet" href="css/style.css">
   <script type="application/ld+json">
 {
   "@context": "https://schema.org",
   "@type": "WebApplication",
   "name": "Diff Checker",
-  "description": "文本差异对比工具。并列视图、统一视图、单词级高亮、LCS差分算法。浏览器端处理，文本不上传。",
+  "description": "Compare text online with side-by-side and unified diff views, word-level highlighting, and private browser-based processing.",
   "url": "https://diff-checker.vercel.app/",
+  "inLanguage": "en",
   "applicationCategory": "DeveloperApplication",
   "operatingSystem": "All",
   "browserRequirements": "Requires JavaScript",
+  "isAccessibleForFree": true,
   "offers": {
     "@type": "Offer",
     "price": "0",
     "priceCurrency": "USD"
   },
   "featureList": [
-    "并列双栏对比视图",
-    "统一视图(Git diff风格)",
-    "单词级精确差异高亮",
-    "新增/删除/修改统计",
-    "忽略大小写与空白",
-    "一键交换对比方向"
-  ]
+    "Side-by-side text comparison",
+    "Unified diff view",
+    "Word-level highlighting",
+    "Added, removed, and changed statistics",
+    "Ignore case and whitespace options",
+    "Swap comparison direction"
+  ],
+  "publisher": {
+    "@type": "Organization",
+    "name": "Dudu Tools"
+  }
 }
   </script>
   <script type="application/ld+json">
 {
   "@context": "https://schema.org",
   "@type": "FAQPage",
+  "inLanguage": "en",
   "mainEntity": [
     {
       "@type": "Question",
-      "name": "Diff Checker 能对比多大的文件？",
+      "name": "What can I compare with Diff Checker?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "受浏览器内存限制，建议对比 10MB 以下的文本文件。"
+        "text": "You can compare plain text, code snippets, logs, configuration files, and other text-based content."
       }
     },
     {
       "@type": "Question",
-      "name": "对比结果可以导出吗？",
+      "name": "Is the text uploaded?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "支持复制结果和下载，方便保存或分享。"
+        "text": "No. The comparison runs locally in your browser."
       }
     },
     {
       "@type": "Question",
-      "name": "支持哪些差异对比算法？",
+      "name": "Does it support word-level differences?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "采用 LCS（最长公共子序列）算法，精确到单词级别的差异对比。"
+        "text": "Yes. The tool can highlight changes at the word level in addition to line-level differences."
       }
     },
     {
       "@type": "Question",
-      "name": "Diff Checker 安全吗？",
+      "name": "Can I ignore whitespace or case?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "所有对比在浏览器端完成，文本不上传服务器，完全安全。"
+        "text": "Yes. Options are available to ignore case and whitespace differences."
       }
     }
   ]
 }
   </script>
+
+  <!-- Vercel Analytics -->
+  <script defer src="/_vercel/insights/script.js"></script>
+  <!-- Vercel Speed Insights -->
+  <script defer src="/_vercel/speed-insights/script.js"></script>
 </head>
 <body>
   <header class="header">
     <div class="container">
       <div class="header-inner">
         <h1 class="logo">📊 Diff Checker</h1>
-        <p class="tagline">文本差异对比 · 逐行逐词高亮 · 浏览器端处理</p>
+        <p class="tagline">Compare text · line and word highlighting · browser-based diff</p>
+        <nav class="language-switcher" aria-label="Language"><a class="active" href="./" lang="en">EN</a><a class="" href="zh/" lang="zh-CN">中文</a></nav>
       </div>
     </div>
   </header>
@@ -106,14 +119,14 @@
     <!-- View Mode Toggle -->
     <div class="view-controls">
       <div class="view-tabs" role="tablist">
-        <button class="view-tab active" data-view="side" tabindex="0">并列视图</button>
-        <button class="view-tab" data-view="unified" tabindex="-1">统一视图</button>
+        <button class="view-tab active" data-view="side" tabindex="0">Side-by-side</button>
+        <button class="view-tab" data-view="unified" tabindex="-1">Unified view</button>
       </div>
       <div class="view-actions">
-        <span id="diff-stats" class="diff-stats">差异: 0</span>
-        <button class="btn btn-sm" onclick="swapInputs()">🔄 交换</button>
-        <button class="btn btn-sm" onclick="clearAll()">清空</button>
-        <button class="btn btn-sm" onclick="loadSamples()">📝 示例</button>
+        <span id="diff-stats" class="diff-stats">Diffs: 0</span>
+        <button class="btn btn-sm" onclick="swapInputs()">Swap</button>
+        <button class="btn btn-sm" onclick="clearAll()">Clear</button>
+        <button class="btn btn-sm" onclick="loadSamples()">Sample</button>
       </div>
     </div>
 
@@ -121,17 +134,17 @@
     <div class="input-section">
       <div class="input-panel">
         <div class="panel-header">
-          <label for="text-left">原始文本</label>
+          <label for="text-left">Original text</label>
           <span id="lines-left" class="line-badge">0 lines</span>
         </div>
-        <textarea id="text-left" class="diff-editor" placeholder="粘贴原始文本..." spellcheck="false"></textarea>
+        <textarea id="text-left" class="diff-editor" placeholder="Paste original text..." spellcheck="false"></textarea>
       </div>
       <div class="input-panel">
         <div class="panel-header">
-          <label for="text-right">新文本</label>
+          <label for="text-right">New text</label>
           <span id="lines-right" class="line-badge">0 lines</span>
         </div>
-        <textarea id="text-right" class="diff-editor" placeholder="粘贴新文本..." spellcheck="false"></textarea>
+        <textarea id="text-right" class="diff-editor" placeholder="Paste new text..." spellcheck="false"></textarea>
       </div>
     </div>
 
@@ -139,30 +152,30 @@
     <div class="options-bar">
       <label class="checkbox-label">
         <input type="checkbox" id="opt-ignore-case" onchange="runDiff()">
-        忽略大小写
+        Ignore case
       </label>
       <label class="checkbox-label">
         <input type="checkbox" id="opt-ignore-whitespace" onchange="runDiff()">
-        忽略空白差异
+        Ignore whitespace
       </label>
       <label class="checkbox-label">
         <input type="checkbox" id="opt-word-diff" checked onchange="runDiff()">
-        单词级高亮
+        Word-level highlighting
       </label>
       <label class="checkbox-label">
         <input type="checkbox" id="opt-wrap" checked onchange="toggleWrap()">
-        自动换行
+        Wrap lines
       </label>
     </div>
 
     <!-- Diff Results: Side by Side -->
     <div id="diff-side" class="diff-output">
       <div class="diff-panel">
-        <div class="diff-panel-header removed-header">删除 <span id="removed-count" class="diff-count">0</span></div>
+        <div class="diff-panel-header removed-header">Removed <span id="removed-count" class="diff-count">0</span></div>
         <div id="diff-left" class="diff-content"></div>
       </div>
       <div class="diff-panel">
-        <div class="diff-panel-header added-header">新增 <span id="added-count" class="diff-count">0</span></div>
+        <div class="diff-panel-header added-header">Added <span id="added-count" class="diff-count">0</span></div>
         <div id="diff-right" class="diff-content"></div>
       </div>
     </div>
@@ -170,21 +183,44 @@
     <!-- Diff Results: Unified -->
     <div id="diff-unified" class="diff-output" style="display:none">
       <div class="diff-panel unified">
-        <div class="diff-panel-header">差异对比 <span id="unified-count" class="diff-count">0</span></div>
+        <div class="diff-panel-header">Diff comparison <span id="unified-count" class="diff-count">0</span></div>
         <div id="diff-unified-content" class="diff-content"></div>
       </div>
     </div>
 
     <!-- Summary -->
     <div id="diff-summary" class="diff-summary">
-      <span class="placeholder-text">在左右两侧输入文本，差异将自动对比</span>
+      <span class="placeholder-text">Enter text on both sides to compare differences automatically</span>
     </div>
+    <section class="seo-content" aria-label="Tool guide and frequently asked questions">
+      <div class="seo-block">
+        <h2>What is Diff Checker?</h2>
+        <p>A private online diff checker for comparing two text snippets with side-by-side view, unified diff view, and word-level highlighting.</p>
+      </div>
+      <div class="seo-grid">
+        <div class="seo-block">
+          <h2>Key Features</h2>
+          <ul><li>Side-by-side text comparison</li><li>Unified diff view</li><li>Word-level highlighting</li><li>Added, removed, and changed statistics</li><li>Ignore case and whitespace options</li><li>Swap comparison direction</li></ul>
+        </div>
+        <div class="seo-block">
+          <h2>Common Use Cases</h2>
+          <ul><li>Compare code snippets</li><li>Review document edits</li><li>Check API payload changes</li><li>Find small text differences quickly</li></ul>
+        </div>
+      </div>
+      <div class="seo-block faq-list">
+        <h2>Frequently Asked Questions</h2>
+        <details><summary>What can I compare with Diff Checker?</summary><p>You can compare plain text, code snippets, logs, configuration files, and other text-based content.</p></details>
+        <details><summary>Is the text uploaded?</summary><p>No. The comparison runs locally in your browser.</p></details>
+        <details><summary>Does it support word-level differences?</summary><p>Yes. The tool can highlight changes at the word level in addition to line-level differences.</p></details>
+        <details><summary>Can I ignore whitespace or case?</summary><p>Yes. Options are available to ignore case and whitespace differences.</p></details>
+      </div>
+    </section>
   </main>
 
   <footer class="footer">
     <div class="container">
-      <p>📊 Diff Checker — 所有处理在浏览器端完成，文本不上传服务器</p>
-      <p class="footer-small">纯前端工具 · 零服务端 · 隐私安全</p>
+      <p>📊 Diff Checker — All comparison runs in your browser. Text is not uploaded.</p>
+      <p class="footer-small">Frontend-only tool · no server storage · privacy-first</p>
     </div>
   </footer>
 

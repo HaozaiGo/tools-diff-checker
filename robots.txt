@@ -1,3 +1,3 @@
 User-agent: *
 Allow: /
-Sitemap: https://diff-checker.vercel.app/sitemap.xml
+Sitemap: https://diff.toolkitbox.org/sitemap.xml

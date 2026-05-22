@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <!-- Primary Meta -->
+  <meta name="description" content="文本差异对比工具。并列视图、统一视图、单词级高亮、LCS差分算法。浏览器端处理，文本不上传。">
+  <meta name="keywords" content="diff checker, text compare, text diff online, 文本对比工具, 差异对比, diff tool, compare text">
+  <meta name="author" content="ToolkitBox">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://diff.toolkitbox.org/zh/">
+  <link rel="alternate" hreflang="en" href="https://diff.toolkitbox.org/">
+  <link rel="alternate" hreflang="zh-CN" href="https://diff.toolkitbox.org/zh/">
+  <link rel="alternate" hreflang="x-default" href="https://diff.toolkitbox.org/">
+<!-- Open Graph -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Diff Checker - 免费在线工具">
+  <meta property="og:description" content="文本差异对比工具。并列视图、统一视图、单词级高亮、LCS差分算法。浏览器端处理，文本不上传。">
+  <meta property="og:url" content="https://diff.toolkitbox.org/zh/">
+<meta property="og:site_name" content="Diff Checker">
+  <meta property="og:locale" content="zh_CN">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Diff Checker - 免费在线工具">
+  <meta name="twitter:description" content="文本差异对比工具。并列视图、统一视图、单词级高亮、LCS差分算法。浏览器端处理，文本不上传。">
+<meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Diff Checker - 免费在线工具 | 浏览器端处理 · 隐私安全</title>
+  <link rel="stylesheet" href="../css/style.css">
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": "Diff Checker",
+  "description": "文本差异对比工具。并列视图、统一视图、单词级高亮、LCS差分算法。浏览器端处理，文本不上传。",
+  "url": "https://diff.toolkitbox.org/zh/",
+  "inLanguage": "zh-CN",
+  "applicationCategory": "DeveloperApplication",
+  "operatingSystem": "All",
+  "browserRequirements": "Requires JavaScript",
+  "isAccessibleForFree": true,
+  "offers": {
+    "@type": "Offer",
+    "price": "0",
+    "priceCurrency": "USD"
+  },
+  "featureList": [
+    "Side-by-side text comparison",
+    "Unified diff view",
+    "Word-level highlighting",
+    "Added, removed, and changed statistics",
+    "Ignore case and whitespace options",
+    "Swap comparison direction"
+  ],
+  "publisher": {
+    "@type": "Organization",
+    "name": "ToolkitBox"
+  }
+}
+  </script>
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "inLanguage": "zh-CN",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "可以对比哪些内容？",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "可对比普通文本、代码片段、日志、配置文件等文本内容。"
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "文本会上传吗？",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "不会。差异对比在浏览器端完成。"
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "支持逐词高亮吗？",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "支持，除了逐行差异，也可以显示单词级别变化。"
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "可以忽略空白或大小写吗？",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "可以，页面提供忽略大小写和忽略空白差异选项。"
+      }
+    }
+  ]
+}
+  </script>
+</head>
+<body>
+  <header class="header">
+    <div class="container">
+      <div class="header-inner">
+        <h1 class="logo">📊 Diff Checker</h1>
+        <p class="tagline">文本差异对比 · 逐行逐词高亮 · 浏览器端处理</p>
+        <nav class="language-switcher" aria-label="Language"><a class="home-link" href="https://toolkitbox.org/zh/">工具首页</a><a class="" href="../" lang="en">EN</a><a class="active" href="./" lang="zh-CN">中文</a></nav>
+      </div>
+    </div>
+  </header>
+
+  <main class="main container">
+    <!-- View Mode Toggle -->
+    <div class="view-controls">
+      <div class="view-tabs" role="tablist">
+        <button class="view-tab active" data-view="side" tabindex="0">并列视图</button>
+        <button class="view-tab" data-view="unified" tabindex="-1">统一视图</button>
+      </div>
+      <div class="view-actions">
+        <span id="diff-stats" class="diff-stats">差异: 0</span>
+        <button class="btn btn-sm" onclick="swapInputs()">🔄 交换</button>
+        <button class="btn btn-sm" onclick="clearAll()">清空</button>
+        <button class="btn btn-sm" onclick="loadSamples()">📝 示例</button>
+      </div>
+    </div>
+
+    <!-- Input Section -->
+    <div class="input-section">
+      <div class="input-panel">
+        <div class="panel-header">
+          <label for="text-left">原始文本</label>
+          <span id="lines-left" class="line-badge">0 lines</span>
+        </div>
+        <textarea id="text-left" class="diff-editor" placeholder="粘贴原始文本..." spellcheck="false"></textarea>
+      </div>
+      <div class="input-panel">
+        <div class="panel-header">
+          <label for="text-right">新文本</label>
+          <span id="lines-right" class="line-badge">0 lines</span>
+        </div>
+        <textarea id="text-right" class="diff-editor" placeholder="粘贴新文本..." spellcheck="false"></textarea>
+      </div>
+    </div>
+
+    <!-- Diff Options -->
+    <div class="options-bar">
+      <label class="checkbox-label">
+        <input type="checkbox" id="opt-ignore-case" onchange="runDiff()">
+        忽略大小写
+      </label>
+      <label class="checkbox-label">
+        <input type="checkbox" id="opt-ignore-whitespace" onchange="runDiff()">
+        忽略空白差异
+      </label>
+      <label class="checkbox-label">
+        <input type="checkbox" id="opt-word-diff" checked onchange="runDiff()">
+        单词级高亮
+      </label>
+      <label class="checkbox-label">
+        <input type="checkbox" id="opt-wrap" checked onchange="toggleWrap()">
+        自动换行
+      </label>
+    </div>
+
+    <!-- Diff Results: Side by Side -->
+    <div id="diff-side" class="diff-output">
+      <div class="diff-panel">
+        <div class="diff-panel-header removed-header">删除 <span id="removed-count" class="diff-count">0</span></div>
+        <div id="diff-left" class="diff-content"></div>
+      </div>
+      <div class="diff-panel">
+        <div class="diff-panel-header added-header">新增 <span id="added-count" class="diff-count">0</span></div>
+        <div id="diff-right" class="diff-content"></div>
+      </div>
+    </div>
+
+    <!-- Diff Results: Unified -->
+    <div id="diff-unified" class="diff-output" style="display:none">
+      <div class="diff-panel unified">
+        <div class="diff-panel-header">差异对比 <span id="unified-count" class="diff-count">0</span></div>
+        <div id="diff-unified-content" class="diff-content"></div>
+      </div>
+    </div>
+
+    <!-- Summary -->
+    <div id="diff-summary" class="diff-summary">
+      <span class="placeholder-text">在左右两侧输入文本，差异将自动对比</span>
+    </div>
+    <section class="seo-content" aria-label="工具说明和常见问题">
+      <div class="seo-block">
+        <h2>Diff Checker 是什么？</h2>
+        <p>一个用于文本差异对比的浏览器端工具，支持并列视图、统一视图、逐词高亮和忽略大小写/空白。</p>
+      </div>
+      <div class="seo-grid">
+        <div class="seo-block">
+          <h2>主要功能</h2>
+          <ul><li>Side-by-side text comparison</li><li>Unified diff view</li><li>Word-level highlighting</li><li>Added, removed, and changed statistics</li><li>Ignore case and whitespace options</li><li>Swap comparison direction</li></ul>
+        </div>
+        <div class="seo-block">
+          <h2>适合场景</h2>
+          <ul><li>开发、调试或发布前的日常处理</li><li>在浏览器端快速完成任务，减少数据上传</li><li>为技术文档、测试数据或线上内容做准备</li></ul>
+        </div>
+      </div>
+      <div class="seo-block faq-list">
+        <h2>常见问题</h2>
+        <details><summary>可以对比哪些内容？</summary><p>可对比普通文本、代码片段、日志、配置文件等文本内容。</p></details>
+        <details><summary>文本会上传吗？</summary><p>不会。差异对比在浏览器端完成。</p></details>
+        <details><summary>支持逐词高亮吗？</summary><p>支持，除了逐行差异，也可以显示单词级别变化。</p></details>
+        <details><summary>可以忽略空白或大小写吗？</summary><p>可以，页面提供忽略大小写和忽略空白差异选项。</p></details>
+      </div>
+      <div class="seo-block related-tools">
+        <h2>相关工具</h2>
+        <div class="related-links"><a href="https://json.toolkitbox.org/zh/">JSON 格式化</a><a href="https://regex.toolkitbox.org/zh/">正则测试器</a><a href="https://url.toolkitbox.org/zh/">URL 编码解码</a></div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      <p>📊 Diff Checker — 所有处理在浏览器端完成，文本不上传服务器</p>
+      <p class="footer-small">纯前端工具 · 零服务端 · 隐私安全</p>
+    </div>
+  </footer>
+
+  <script src="../js/diff.js"></script>
+  <script src="../js/app.js"></script>
+</body>
+</html>

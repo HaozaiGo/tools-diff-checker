@@ -1,0 +1,44 @@
+# Diff Checker
+
+> A private online diff checker for comparing two text snippets with side-by-side view, unified diff view, and word-level highlighting.
+
+Canonical URL: https://diff.toolkitbox.org/
+Chinese URL: https://diff.toolkitbox.org/zh/
+
+## What it does
+
+- Side-by-side text comparison
+- Unified diff view
+- Word-level highlighting
+- Added, removed, and changed statistics
+- Ignore case and whitespace options
+- Swap comparison direction
+
+## Best for
+
+- Compare code snippets
+- Review document edits
+- Check API payload changes
+- Find small text differences quickly
+
+## Privacy
+
+This tool is designed for browser-based processing whenever possible. User-provided content is not stored by ToolkitBox.
+
+## FAQ
+
+### What can I compare with Diff Checker?
+
+You can compare plain text, code snippets, logs, configuration files, and other text-based content.
+
+### Is the text uploaded?
+
+No. The comparison runs locally in your browser.
+
+### Does it support word-level differences?
+
+Yes. The tool can highlight changes at the word level in addition to line-level differences.
+
+### Can I ignore whitespace or case?
+
+Yes. Options are available to ignore case and whitespace differences.

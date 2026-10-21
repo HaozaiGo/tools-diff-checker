@@ -6,6 +6,7 @@
  */
 function lcsIndices(a, b) {
   const m = a.length, n = b.length;
+  if ((m + 1) * (n + 1) > 4000000) throw new RangeError('DIFF_TOO_LARGE');
   // Use a single-row approach for the DP table
   const dp = Array.from({ length: m + 1 }, () => new Int32Array(n + 1));
   
@@ -71,12 +72,7 @@ function computeDiff(leftLines, rightLines, options = {}) {
       ri++;
     }
     // Equal line
-    if (leftLines[ci] === rightLines[ri]) {
-      ops.push({ type: 'equal', leftLine: ci, rightLine: ri, oldText: leftLines[ci], newText: rightLines[ri] });
-    } else {
-      // Content changed but normalized matches - word-level diff needed
-      ops.push({ type: 'replace', leftLine: ci, rightLine: ri, oldText: leftLines[ci], newText: rightLines[ri] });
-    }
+    ops.push({ type: 'equal', leftLine: ci, rightLine: ri, oldText: leftLines[ci], newText: rightLines[ri] });
     li = ci + 1;
     ri++;
   }
@@ -92,7 +88,23 @@ function computeDiff(leftLines, rightLines, options = {}) {
     ri++;
   }
 
-  return ops;
+  // Pair adjacent edits so the word-diff option can highlight changed lines.
+  const aligned = [];
+  for (let i = 0; i < ops.length;) {
+    if (ops[i].type === 'equal') { aligned.push(ops[i++]); continue; }
+    const deleted = [], inserted = [];
+    while (i < ops.length && ops[i].type !== 'equal') {
+      const op = ops[i++];
+      (op.type === 'delete' ? deleted : inserted).push(op);
+    }
+    for (let j = 0; j < Math.max(deleted.length, inserted.length); j++) {
+      if (deleted[j] && inserted[j]) {
+        aligned.push({ type: 'replace', leftLine: deleted[j].leftLine, rightLine: inserted[j].rightLine,
+          oldText: deleted[j].oldText, newText: inserted[j].newText });
+      } else aligned.push(deleted[j] || inserted[j]);
+    }
+  }
+  return aligned;
 }
 
 /**
